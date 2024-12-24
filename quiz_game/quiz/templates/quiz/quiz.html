@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'quiz/quiz_styles.css' %}">
+    <title>Quiz</title>
+</head>
+
+<body>
+    <div class="quiz">
+
+    <h1>{{ category.name }} Quiz</h1>
+    <p>Question {{ question_index }} of {{ total_questions }}</p>
+    <p >{{ question.text }}</p>
+    <form method="post">
+        {% csrf_token %}
+        {% for answer in question.answers.all %}
+        <input type="radio" name="answer" value="{{ answer.id }}" required> {{ answer.text }}<br>
+        {% endfor %}
+        <button type="submit" id="button" name="previous" {% if question_index == 1 %}disabled{% endif %}>Previous</button>
+        <button type="submit" id="button" name="next">Next</button>
+    </form>
+    </div>
+    
+</body>
+</html>
+
+

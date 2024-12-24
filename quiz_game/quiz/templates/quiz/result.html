@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'quiz/quiz_styles.css' %}">
+    <title>Result</title>
+</head>
+<body>
+
+    <h1>Quiz Result</h1>
+    <p>Your Score: {{ score }} / {{ total_questions }}</p>
+    <a href="{% url 'home' %}" type="button" id="button">Back to Home</a>
+    
+</body>
+</html>
